@@ -2,6 +2,7 @@
 
 **1. Install**
 Copy main.py in to your own file. 
+
 pip install -r requirements.txt (in powershell/shell)
 
 **2. Get Bot Token**
