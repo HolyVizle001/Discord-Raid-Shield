@@ -13,7 +13,8 @@ pip install -r requirements.txt (in powershell/shell)
 **3. Configure**
 Create `.env` file:
 ```
-BOT_TOKEN=put_token_here
+BOT_TOKEN=bot_token_here
+ALERT_CHANNEL_ID=alert_channel_id_here
 ```
 
 **4. Invite Bot**
