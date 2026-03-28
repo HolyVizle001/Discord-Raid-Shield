@@ -127,7 +127,7 @@ async def send_alert(guild, user, reason, details):
         return
 
     embed = discord.Embed(
-        title='🚨 Raid Protection Alert',
+        title='Raid Protection Alert',
         description=f'**User:** {user.mention} ({user.id})\n**Reason:** {reason}',
         color=discord.Color.red(),
         timestamp=datetime.now()
@@ -180,9 +180,9 @@ async def take_action(message, user, reason, violations):
 
 @bot.event
 async def on_ready():
-    print(f'✅ Logged in as {bot.user}')
-    print('🛡️  Raid Protection Active')
-    print(f'📊 Rate Limits: {CONFIG["RATE_LIMITS"]["MAX_MESSAGES"]} msgs, '
+    print(f'Logged in as {bot.user}')
+    print('Raid Protection Active')
+    print(f'Rate Limits: {CONFIG["RATE_LIMITS"]["MAX_MESSAGES"]} msgs, '
           f'{CONFIG["RATE_LIMITS"]["MAX_MENTIONS"]} mentions, '
           f'{CONFIG["RATE_LIMITS"]["MAX_LINKS"]} links per '
           f'{CONFIG["RATE_LIMITS"]["TIME_WINDOW"]}s')
@@ -238,7 +238,7 @@ async def raid_stats(ctx):
     total_violations = sum(data['violations'] for data in tracker.user_activity.values())
 
     embed = discord.Embed(
-        title='🛡️ Raid Protection Statistics',
+        title='Raid Protection Statistics',
         color=discord.Color.blue()
     )
     embed.add_field(name='Tracked Users', value=str(active_users), inline=True)
@@ -283,22 +283,22 @@ async def reset_user(ctx, member: discord.Member):
 
     if user_id in tracker.user_activity:
         del tracker.user_activity[user_id]
-        await ctx.send(f'✅ Reset activity tracking for {member.mention}')
+        await ctx.send(f'Reset activity tracking for {member.mention}')
     else:
         await ctx.send(f'{member.mention} has no tracked activity.')
 
 @bot.event
 async def on_command_error(ctx, error):
     if isinstance(error, commands.MissingPermissions):
-        await ctx.send('❌ You do not have permission to use this command.')
+        await ctx.send('You do not have permission to use this command.')
     elif isinstance(error, commands.MemberNotFound):
-        await ctx.send('❌ Member not found.')
+        await ctx.send('Member not found.')
     else:
         print(f'Error: {error}')
 
 if __name__ == '__main__':
     if CONFIG['BOT_TOKEN'] == 'YOUR_BOT_TOKEN_HERE' or not CONFIG['BOT_TOKEN']:
-        print('❌ Error: BOT_TOKEN not set!')
+        print('Error: BOT_TOKEN not set!')
         print('Please set your bot token in the .env file or CONFIG dictionary')
         exit(1)
 
